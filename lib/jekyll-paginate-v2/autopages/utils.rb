@@ -5,20 +5,32 @@ module Jekyll
 
       # Static: returns a fully formatted string with the tag macro (:tag) replaced
       #
-      def self.format_tag_macro(toFormat, tag)
-        return toFormat.sub(':tag', Jekyll::Utils.slugify(tag.to_s))
+      def self.format_tag_macro(toFormat, tag, slugify: true)
+        if slugify
+          return toFormat.sub(':tag', Jekyll::Utils.slugify(tag.to_s))
+        else
+          return toFormat.sub(':tag', tag.to_s)
+        end
       end #function format_tag_macro
 
       # Static: returns a fully formatted string with the category macro (:cat) replaced
       #
-      def self.format_cat_macro(toFormat, category)
-        return toFormat.sub(':cat', Jekyll::Utils.slugify(category.to_s))
+      def self.format_cat_macro(toFormat, category, slugify: true)
+        if slugify
+          return toFormat.sub(':cat', Jekyll::Utils.slugify(category.to_s))
+        else
+          return toFormat.sub(':cat', category.to_s)
+        end
       end #function format_cat_macro
 
       # Static: returns a fully formatted string with the collection macro (:coll) replaced
       #
-      def self.format_coll_macro(toFormat, collection)
-        return toFormat.sub(':coll', Jekyll::Utils.slugify(collection.to_s))
+      def self.format_coll_macro(toFormat, collection, slugify: true)
+        if slugify
+          return toFormat.sub(':coll', Jekyll::Utils.slugify(collection.to_s))
+        else
+          return toFormat.sub(':coll', collection.to_s)
+        end
       end #function format_coll_macro
 
       # Static: returns all documents from all collections defined in the hash of collections passed in
